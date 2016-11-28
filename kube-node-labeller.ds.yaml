@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: kube-node-labeller
+spec:
+  template:
+    metadata:
+      labels:
+        app: kube-node-labeller
+    spec:
+      containers:
+        - name: kube-node-labeller
+          imagePullPolicy: Always
+          image: iameli/kube-node-labeller:latest
+
