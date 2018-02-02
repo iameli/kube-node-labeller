@@ -18,7 +18,7 @@ run () {
 
   for tag in $tags; do
     # Keys may not contain colons, replace with dashes
-    key="$(echo $tag | jq -r '.Key' | sed s/:/-/g | sed s/\//-/)"    
+    key="$(echo $tag | jq -r '.Key' | sed s/:/-/g | sed s!/!-!)"    
     # Values may not be more than 63 chars
     value="$(echo $tag | jq -r '.Value' | cut -c 1-63 | sed s/:/-/g | sed s/\\\//-/g)"
     patch="$(jq -n ".metadata.labels[\"$key\"] = \"$value\"")"
